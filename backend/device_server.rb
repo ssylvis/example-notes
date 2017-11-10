@@ -7,4 +7,4 @@
 require_relative 'config/setup'
 require 'server'
 
-Server::main(5000)
+Server::main

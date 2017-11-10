@@ -7,4 +7,4 @@
 require_relative 'config/setup'
 require 'client'
 
-Client::main("localhost", 5000)
+Client::main

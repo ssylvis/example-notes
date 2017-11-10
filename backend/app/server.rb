@@ -11,7 +11,10 @@ module Server
   end
 
   # main starts an RpcServer that receives requests to DeviceServer.
-  def self.main(port)
+  def self.main
+    config = Config.instance.config['server']
+    port = config['port']
+
     server = GRPC::RpcServer.new
     server.add_http2_port("localhost:#{port}", :this_port_is_insecure)
     server.handle(DeviceService)
