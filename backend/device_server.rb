@@ -2,9 +2,9 @@
 
 # gRPC server that implements the Device service.
 #
-# Usage: $ path/to/greeter_server.rb
+# Usage: $ ./path/to/server.rb
 
 require_relative 'config/boot'
-require 'application'
+require 'server'
 
-Application::main
+Server::main
