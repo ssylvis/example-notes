@@ -1,0 +1,30 @@
+<h1>Edit note</h1>
+
+<%= form_with(model: @note) do |form| %>
+
+  <% if @note.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:
+      </h2>
+      <ul>
+        <% @note.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :note %><br>
+    <%= form.text_field :note %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>
