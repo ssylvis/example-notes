@@ -4,7 +4,7 @@
 #
 # Usage: $ ./path/to/device.rb
 
-require_relative 'config/boot'
+require_relative 'config/setup'
 require 'client'
 
-Client::main
+Client::main("localhost", 5000)

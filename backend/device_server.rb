@@ -4,7 +4,7 @@
 #
 # Usage: $ ./path/to/server.rb
 
-require_relative 'config/boot'
+require_relative 'config/setup'
 require 'server'
 
-Server::main
+Server::main(5000)

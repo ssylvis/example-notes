@@ -11,11 +11,11 @@ module Server
   end
 
   # main starts an RpcServer that receives requests to DeviceServer.
-  def self.main
+  def self.main(port)
     server = GRPC::RpcServer.new
-    server.add_http2_port('0.0.0.0:50051', :this_port_is_insecure)
+    server.add_http2_port("localhost:#{port}", :this_port_is_insecure)
     server.handle(DeviceService)
-    puts "Starting RpcServer on port 50051"
+    puts "Starting RpcServer at localhost:#{port}"
 
     server.run
   end
