@@ -1,0 +1,24 @@
+default: &default
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  adapter: postgresql
+  database: development
+
+test:
+  <<: *default
+  adapter: sqlite3
+  database: db/test.sqlite3
+
+production:
+  <<: *default
+  adapter: postgresql
+  database: ds2s23oqp3htc
+  host: ec2-50-19-218-160.compute-1.amazonaws.com
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  password: cf84b00f9f2ce08789ba556fae84b7da7e45bfe24100fd11cfa87a72be52f748
+  port: 5432
+  user: kwmfyaiebugaaa

@@ -15,6 +15,11 @@ class Config
 
     # Load application properties
     @config = YAML::load(File.open(File.join(__dir__, 'application.yml')))
+
+    # Load DB properties
+    database = YAML::load(File.open(File.join(__dir__, 'database.yml')))
+    env = ENV['RUBY_ENV'] || 'development'
+    @config.merge!('database' => database[env])
   end
 end
 

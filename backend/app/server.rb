@@ -1,3 +1,4 @@
+require 'active_record'
 require 'grpc'
 require 'device_services_pb'
 
@@ -12,10 +13,15 @@ module Server
 
   # main starts an RpcServer that receives requests to DeviceServer.
   def self.main
-    config = Config.instance.config['server']
-    port = config['port']
+    config = Config.instance.config
+    puts config
 
+    # Connect to database
+    ActiveRecord::Base.establish_connection(config['database'])
+
+    # Start server
     server = GRPC::RpcServer.new
+    port = config['server']['port']
     server.add_http2_port("localhost:#{port}", :this_port_is_insecure)
     server.handle(DeviceService)
     puts "Starting RpcServer at localhost:#{port}"
