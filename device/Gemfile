@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 ruby '2.3.5'
 
+gem 'concurrent-ruby', require: 'concurrent'
 gem 'grpc'
