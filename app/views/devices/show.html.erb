@@ -1,0 +1,12 @@
+<p>
+  <strong>Device:</strong>
+    <%= @device.device_uid %>
+</p>
+
+<p>
+  <strong>Last Heartbeat:</strong>
+    <%= time_ago_in_words(@device.last_heartbeat) if @device.last_heartbeat %>
+</p>
+
+<%= link_to 'Edit', edit_device_path(@device) %>
+<%= link_to 'Back', devices_path %>

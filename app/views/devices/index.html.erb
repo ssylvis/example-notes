@@ -1,0 +1,20 @@
+<h1>Listing devices</h1>
+
+<%= link_to 'New device', new_device_path %>
+
+<table>
+  <tr>
+    <th>Device</th>
+    <th>Last Heartbeat</th>
+  </tr>
+
+  <% @devices.each do |device| %>
+    <tr>
+      <td><%= device.device_uid %></td>
+      <td><%= time_ago_in_words(device.last_heartbeat) if device.last_heartbeat %></td>
+      <td><%= link_to 'Show', device_path(device) %></td>
+      <td><%= link_to 'Edit', edit_device_path(device) %></td>
+      <td><%= link_to 'Destroy', device_path(device), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

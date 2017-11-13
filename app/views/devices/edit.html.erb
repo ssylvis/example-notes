@@ -1,0 +1,30 @@
+<h1>Edit device</h1>
+
+<%= form_with(model: @device) do |form| %>
+
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:
+      </h2>
+      <ul>
+        <% @device.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# <p> %>
+  <%#   <%= form.label :device %1><br> %>
+  <%#   <%= form.text_field :device %1> %>
+  <%# </p> %>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>
