@@ -4,10 +4,10 @@ require 'device_services_pb'
 
 module Server
   # Implementation of the device RPC service.
-  class DeviceService < Device::Device::Service
+  class DeviceService < Backend::Device::Service
     def heartbeat(request, _call)
       puts "Heartbeat: #{request.to_hash}"
-      Device::HeartbeatResponse.new
+      Backend::HeartbeatResponse.new
     end
   end
 

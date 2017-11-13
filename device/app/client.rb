@@ -7,11 +7,12 @@ module Client
     config = Config.instance.config['device']
     host = config['host']
     port = config['port']
+    uid = config['uid']
 
-    device_stub = Device::Device::Stub.new("#{host}:#{port}", :this_channel_is_insecure)
+    device_stub = Backend::Device::Stub.new("#{host}:#{port}", :this_channel_is_insecure)
 
-    request = Device::HeartbeatRequest.new(
-      device_uid: SecureRandom.uuid,
+    request = Backend::HeartbeatRequest.new(
+      device_uid: uid,
       timestamp: Time.now.to_i)
 
     response = device_stub.heartbeat(request)

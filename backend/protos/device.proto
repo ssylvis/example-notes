@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package device;
+package backend;
 
 // The device service definition.
 service Device {
