@@ -27,6 +27,7 @@ module Server
   # main starts an RpcServer that receives requests to DeviceServer.
   def self.main
     config = Config.instance.config
+    puts config
 
     # Connect to database
     ActiveRecord::Base.establish_connection(config['database'])

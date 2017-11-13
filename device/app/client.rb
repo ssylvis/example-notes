@@ -3,11 +3,11 @@ require 'device_services_pb'
 require 'securerandom'
 
 module Client
-  def self.main
+  def self.main(device_uid)
     config = Config.instance.config['device']
     host = config['host']
     port = config['port']
-    uid = config['uid']
+    uid = device_uid || SecureRandom.uuid
 
     device_stub = Backend::Device::Stub.new("#{host}:#{port}", :this_channel_is_insecure)
 

@@ -7,4 +7,5 @@
 require_relative 'config/setup'
 require 'client'
 
-Client::main
+device_uid = ARGV[0] if ARGV[0]
+Client::main(device_uid)
