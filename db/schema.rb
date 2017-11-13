@@ -12,8 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20171109004342) do
 
-  create_table "notes", force: :cascade do |t|
-    t.string "note"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "devices", force: :cascade do |t|
+    t.string "device_uid"
+    t.datetime "last_heartbeat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
