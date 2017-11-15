@@ -1,10 +1,12 @@
 require 'concurrent'
-require 'device_services_pb'
 require 'grpc'
+require 'device_services_pb'
 require 'securerandom'
 
 module Client
   class Application
+    $log = Logger.new(STDOUT)
+
     def initialize(host, port, uid = Nil)
       @device_uid = uid || SecureRandom.uuid
       @device_stub = Backend::Device::Stub.new("#{host}:#{port}", :this_channel_is_insecure)
@@ -15,9 +17,9 @@ module Client
         device_uid: @device_uid,
         timestamp: Time.now.to_i)
       response = @device_stub.heartbeat(request)
-      puts "Heartbeat: #{response.to_hash}"
+      $log.info("Heartbeat: #{response.to_hash}")
     rescue => e
-      puts "Exception on heartbeat: #{e}"
+      $log.error("Exception on heartbeat", e)
     end
 
     def run
