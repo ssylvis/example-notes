@@ -42,7 +42,7 @@ module Server
 
       Backend::HeartbeatResponse.new
     rescue => e
-      $log.error("Exception thrown", e)
+      $log.error("Exception thrown: #{e}")
       Backend::HeartbeatResponse.new
     end
   end
