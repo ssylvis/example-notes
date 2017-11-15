@@ -19,11 +19,11 @@ module Client
       response = @device_stub.heartbeat(request)
       $log.info("Heartbeat: #{response.to_hash}")
     rescue => e
-      $log.error("Exception on heartbeat", e)
+      $log.error("Exception on heartbeat: #{e}")
     end
 
     def run
-      task = Concurrent::TimerTask.new(execution_interval: 5) do
+      task = Concurrent::TimerTask.new(execution_interval: 5, run_now: true) do
         heartbeat
       end
       task.execute
