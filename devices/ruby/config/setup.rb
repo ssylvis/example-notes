@@ -13,8 +13,7 @@ class Config
     $LOAD_PATH << File.join(base_dir, 'config')
 
     # Add shared proto definitions
-    backend_dir = File.expand_path("../backend/", base_dir)
-    $LOAD_PATH << File.join(backend_dir, 'protos')
+    $LOAD_PATH << File.expand_path("../../protos/ruby", base_dir)
 
     # Load application properties
     @config = YAML::load(File.open(File.join(__dir__, 'application.yml')))
